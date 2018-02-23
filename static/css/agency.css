@@ -653,6 +653,7 @@ section#contact :-ms-input-placeholder {
 footer {
   padding: 25px 0;
   text-align: center;
+  color: #EE4547;
 }
 
 footer span.copyright {
@@ -732,7 +733,7 @@ section#sponsors {
 
 .accordion-group {
     margin-bottom: 2px;
-    border: 1px solid #e5e5e5;
+    /* border: 1px solid #e5e5e5; */
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -750,6 +751,11 @@ section#sponsors {
     display: block;
     padding: 8px 15px;
 }
+
+.accordion-inner {
+  padding-left: 15px;
+}
+
 
 section#faqs {
     background-color: #f1f1f1;
