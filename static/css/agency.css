@@ -722,7 +722,12 @@ h1{
 }
 
 section#sponsors {
-  background-color: #f1f1f1;
+  background-color: #000000;
+  color:white;
+}
+
+.sponsors-img img{
+  height:50px
 }
 
 .accordion-group {
