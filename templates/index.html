@@ -26,9 +26,6 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
-
     <!-- Custom styles for this template -->
     <link href="../static/css/agency.css" rel="stylesheet">
     <link href="../static/css/timeline.css" rel="stylesheet">
@@ -102,8 +99,8 @@
     #map {
         height: 400px;
         width: 100%;
-      /*margin-top: -10em;
-        margin-bottom: -10em;*/
+        margin-top: -10em;
+        margin-bottom: -10em;
     }
 </style>
 
@@ -184,42 +181,21 @@
                 </div>
             </div>
             <div class="row text-center sponsors-img">
-                <div class="col-md-2">
-                    <img src="../static/img/logos/virtuetheory.png">
+                <div class="col-md-4">
+                    <img src="../static/img/logos/white_consensys.png">
                 </div>
-                <div class="col-md-2">
-                    <img src="http://hackital.io/Fall-2017/images/cisco.svg">
+                <div class="col-md-4">
+                    <img src="../static/img/logos/4ws.png">
                 </div>
-                <div class="col-md-2">
-                    <img src="http://hackital.io/Fall-2017/images/drwr.png">
-                </div>
-                <div class="col-md-2">
-                    <img src="http://hackital.io/Fall-2017/images/hackharassment.jpg">
-                </div>
-                <div class="col-md-2">
-                    <img src="http://hackital.io/Fall-2017/images/hackharassment.jpg">
-                </div>
-                <div class="col-md-2">
-                    <img src="http://hackital.io/Fall-2017/images/hackharassment.jpg">
+                <div class="col-md-4">
+                    <img style="height: 40px;" src="../static/img/logos/virtuetheory.png">
                 </div>
             </div>
         </div>
     </section>
 
     <section id="">
-      <div id="map"></div>
-        <script>
-        mapboxgl.accessToken = 'pk.eyJ1Ijoic2NoaWFyaXp6aSIsImEiOiJjajE4a3NuZWowNzQ5MzNvN2xkdGh2YnVwIn0.dOZQgGCs8Fwxpy7bmRvvTg';
-        var map = new mapboxgl.Map({
-          container: 'map', // container id
-          style: 'mapbox://styles/schiarizzi/cje3ka2m25q0w2rl70bd32303', // stylesheet location
-          center: [-77.081602, 38.914457], // starting position [lng, lat]
-          zoom: 11 // starting zoom
-        });
-
-        // disable map zoom when using scroll
-        map.scrollZoom.disable();
-        </script>
+        <div id="map"></div>
     </section>
 
     {% include 'faqs.html' %}
@@ -308,6 +284,7 @@
 
     <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCuTuYQMwwVxPLIC1PKcle-H0vAtbFjyog&callback=initMap'></script>
 
+
 </body>
 
 </html>
@@ -336,6 +313,47 @@
             document.getElementById("days").innerHTML = "0";
         }
     }, 1000);
+
+
+    function initMap() {
+        var map;
+        var brooklyn = new google.maps.LatLng(38.8997145, -77.0485992);
+        var uluru = {
+            lat: 38.8997145,
+            lng: -77.0485992
+        };
+
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+
+        var stylez = [{
+            featureType: "all",
+            elementType: "all",
+            stylers: [{
+                    saturation: -100
+                } // <-- THIS
+            ]
+        }];
+
+        var mapOptions = {
+            zoom: 11,
+            center: brooklyn,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'tehgrayz']
+            }
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var mapType = new google.maps.StyledMapType(stylez, {
+            name: "Grayscale"
+        });
+        map.mapTypes.set('tehgrayz', mapType);
+        map.setMapTypeId('tehgrayz');
+    }
+
 
     $(document).on('show', '.accordion', function(e) {
         //$('.accordion-heading i').toggleClass(' ');

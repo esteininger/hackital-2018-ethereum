@@ -167,7 +167,7 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url("http://hackital.io/Fall-2017/images/image.png");
+  background-image: url("../img/header-img.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -728,7 +728,7 @@ section#sponsors {
 }
 
 .sponsors-img img{
-  height:50px
+  height:60px
 }
 
 .accordion-group {
