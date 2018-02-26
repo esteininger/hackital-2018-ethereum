@@ -30,6 +30,65 @@
     <link href="../static/css/agency.css" rel="stylesheet">
 
 </head>
+<style>
+    .fa-heart {
+        color: #D8588C;
+        padding-left: 3px;
+        padding-right: 2px;
+        -webkit-animation: pulse 1s linear infinite;
+        -moz-animation: pulse 1s linear infinite;
+        -ms-animation: pulse 1s linear infinite;
+        animation: pulse 1s infinite;
+    }
+
+    .social {
+        margin: 60px auto 0px auto;
+        text-align: center;
+    }
+
+    .effect .buttons {
+        margin-top: 50px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .effect .buttons a i {
+      transform: rotate(-45deg);
+    }
+    .effect.thurio a {
+        -webkit-transition: border-radius 0.2s linear 0s;
+        transition: border-radius 0.2s linear 0s;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .effect a {
+        text-decoration: none !important;
+        width: 60px;
+        height: 60px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 20px;
+        font-size: 25px;
+        overflow: hidden;
+        position: relative;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+    }
+    .effect.thurio a:hover {
+        border-radius: 0px;
+    }
+</style>
 
 <body id="page-top">
 
@@ -43,15 +102,15 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#schedule">Schedule</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#sponsors">Sponsors</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#team">Mentors</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#faqs">FAQs</a>
                     </li>
@@ -91,7 +150,7 @@
     </header>
 
     <!-- About -->
-    <section id="schedule">
+    <!-- <section id="schedule">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -178,7 +237,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Services -->
     <section id="sponsors">
@@ -214,7 +273,7 @@
     </section>
 
     <!-- Team -->
-    <section id="team">
+    <!-- <section id="team">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -296,13 +355,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-                </div>
-            </div> -->
         </div>
-    </section>
+    </section> -->
 
     <section class="" id="faqs">
         <div class="container">
@@ -356,7 +410,7 @@
                 <!--First column-->
                 <div class="col-md-6">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Hackital Ethereum</h6>
-                    <p>Hackital is a hackathon in DC. This year the Hackathon theme is Ethereum.</p>
+                    <p>Join 100+ Ethereum enthusiests as we build out ideas, products and ventures. Work on anything related to Ethereum. Hackital is a place for learning and innovation.</p>
                 </div>
                 <!--/.First column-->
 
@@ -366,16 +420,13 @@
                 <div class="col-md-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Important Stuff</h6>
                     <p>
-                        <a href="#">Hackital 2017 Results</a>
+                        <a href="/Fall-2017">Hackital 2017 Results</a>
                     </p>
                     <p>
-                        <a href="#">Something</a>
+                        <a href="mailto:info@hackital.io">Email Us</a>
                     </p>
                     <p>
-                        <a href="#">Email Us</a>
-                    </p>
-                    <p>
-                        <a href="#">Signup</a>
+                        <a href="/form">Signup</a>
                     </p>
                 </div>
                 <!--/.Third column-->
@@ -385,31 +436,35 @@
                 <!--Fourth column-->
                 <div class="col-md-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Social Media</h6>
-                    <p>
-                        <i class="fa fa-facebook mr-3"></i>
-                        <i class="fa fa-linkedin mr-3"></i>
-                        <i class="fa fa-twitter mr-3"></i>
-                        <i class="fa fa-print mr-3"></i>
-                    </p>
+                    <div class="social">
+                        <div class="effect thurio">
+                            <div class="buttons">
+                                <a href="https://www.facebook.com/hackitalDC/" class="fb" title="Join us on Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="https://twitter.com/hackital" class="tw" title="Join us on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="mailto:team@hackital.io" class="email" title="Contact via email"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                                <!--<a href="#" class="insta" title="Join us on Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--/.Fourth column-->
 
             </div>
             <!-- Footer links -->
-          </div>
-        </footer>
+        </div>
+    </footer>
 
-            <div class="row text-center sub-footer">
+    <div class="row text-center sub-footer">
 
-                <!--Grid column-->
-                <div class="col-md-12">
+        <!--Grid column-->
+        <div class="col-md-12">
 
-                    <!--Copyright-->
-                    <p>Built with <i class="fa fa-heart"></i> by <a href="https://virtuetheory.com">Virtue Theory</a></p>
-                    <!--/.Copyright-->
+            <!--Copyright-->
+            <p>Made with <i class="fa fa-heart"></i> by <a href="https://virtuetheory.com">Virtue Theory</a></p>
+            <!--/.Copyright-->
 
-                </div>
-            </div>
+        </div>
+    </div>
 
 
 
