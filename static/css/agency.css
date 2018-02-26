@@ -102,6 +102,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-toggler {
+  margin-right: 5em;
   font-size: 12px;
   right: 0;
   padding: 13px;
@@ -200,7 +201,7 @@ header.masthead .intro-text .intro-heading {
 
 @media (min-width: 768px) {
   header.masthead .intro-text {
-    padding-top: 300px;
+    padding-top: 15em;
     padding-bottom: 200px;
   }
   header.masthead .intro-text .intro-lead-in {
