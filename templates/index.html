@@ -55,15 +55,18 @@
         -ms-flex-pack: center;
         justify-content: center;
     }
+
     .effect .buttons a i {
-      transform: rotate(-45deg);
+        transform: rotate(-45deg);
     }
+
     .effect.thurio a {
         -webkit-transition: border-radius 0.2s linear 0s;
         transition: border-radius 0.2s linear 0s;
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
     }
+
     .effect a {
         text-decoration: none !important;
         width: 60px;
@@ -85,8 +88,16 @@
         color: #ffffff;
         border: 2px solid #ffffff;
     }
+
     .effect.thurio a:hover {
         border-radius: 0px;
+    }
+
+    #map {
+        height: 400px;
+        width: 100%;
+        margin-top: -10em;
+        margin-bottom: -10em;
     }
 </style>
 
@@ -357,6 +368,16 @@
             </div>
         </div>
     </section> -->
+    <section id="">
+        <script>
+            var lat = "48.87209";
+            var lng = "2.34791";
+            var marker_lat = "48.87209";
+            var marker_lng = "2.34791";
+            var zoom = 16;
+        </script>
+        <div id="map"></div>
+    </section>
 
     <section class="" id="faqs">
         <div class="container">
@@ -481,6 +502,8 @@
 
     <!-- Custom scripts for this template -->
     <script src="../static/js/agency.min.js"></script>
+    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCuTuYQMwwVxPLIC1PKcle-H0vAtbFjyog&callback=initMap'></script>
+
 
 </body>
 
@@ -511,11 +534,46 @@
         }
     }, 1000);
 
-    console.log(x)
 
-    /**
-     * EFECTO PARA FLECHAS EN ACORDEON
-     */
+    function initMap() {
+        var map;
+        var brooklyn = new google.maps.LatLng(40.6743890, -73.9455);
+        var uluru = {
+            lat: 40.6743890,
+            lng: -73.9455
+        };
+
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+
+        var stylez = [{
+            featureType: "all",
+            elementType: "all",
+            stylers: [{
+                    saturation: -100
+                } // <-- THIS
+            ]
+        }];
+
+        var mapOptions = {
+            zoom: 11,
+            center: brooklyn,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'tehgrayz']
+            }
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var mapType = new google.maps.StyledMapType(stylez, {
+            name: "Grayscale"
+        });
+        map.mapTypes.set('tehgrayz', mapType);
+        map.setMapTypeId('tehgrayz');
+    }
+
 
     $(document).on('show', '.accordion', function(e) {
         //$('.accordion-heading i').toggleClass(' ');
