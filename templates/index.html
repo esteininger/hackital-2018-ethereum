@@ -102,10 +102,11 @@
     }
 
     #map {
-        height: 400px;
-        width: 100%;
-        margin-top: -10em;
-        margin-bottom: -10em;
+        position: static;
+        width:100%;
+        top: 0;
+        left: 0;
+        min-height: 200px;
     }
 </style>
 
@@ -210,7 +211,9 @@
     </section>
 
     <section id="">
-        <div id="map"></div>
+        <div class="row">
+          <div id="map" class="col-md-12"></div>
+        </div>
     </section>
 
     {% include 'faqs.html' %}
@@ -296,9 +299,9 @@
     <script src="../static/js/timeline.js"></script>
     <script src="../static/js/modernizr.js"></script>
 
-
-    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCuTuYQMwwVxPLIC1PKcle-H0vAtbFjyog&callback=initMap'></script>
-
+    <!-- Mapbox imports-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.43.0-beta.1/mapbox-gl.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.43.0-beta.1/mapbox-gl.js"></script>
 
 </body>
 
@@ -329,45 +332,53 @@
         }
     }, 1000);
 
+    //Mapbox functions
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2NoaWFyaXp6aSIsImEiOiJjajE4a3NuZWowNzQ5MzNvN2xkdGh2YnVwIn0.dOZQgGCs8Fwxpy7bmRvvTg';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/schiarizzi/cje3ka2m25q0w2rl70bd32303', // stylesheet location
+        center: [-77.036871, 38.907192], // starting position [lng, lat]
+        zoom: 11 // starting zoom
+    });
 
-    function initMap() {
-        var map;
-        var brooklyn = new google.maps.LatLng(38.8997145, -77.0485992);
-        var uluru = {
-            lat: 38.8997145,
-            lng: -77.0485992
-        };
+    // disable map zoom when using scroll
+    map.scrollZoom.disable();
 
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
-
-        var stylez = [{
-            featureType: "all",
-            elementType: "all",
-            stylers: [{
-                    saturation: -100
-                } // <-- THIS
-            ]
-        }];
-
-        var mapOptions = {
-            zoom: 11,
-            center: brooklyn,
-            mapTypeControlOptions: {
-                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'tehgrayz']
+    map.on('load', function () {
+      map.addLayer({
+        "id": "points",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-77.089795, 38.917649] //ames hall lon lat
+                    },
+                    "properties": {
+                        "title": "Hackital Ethereum",
+                        "icon": "castle"
+                    }
+                }]
             }
-        };
+        },
+        "layout": {
+            "icon-image": "{icon}-15",
+            "text-field": "{title}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+        },
+        "paint":{
+          "text-color":"rgba(255, 255, 255, 255)"
+        }
+    });
 
-        map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-        var mapType = new google.maps.StyledMapType(stylez, {
-            name: "Grayscale"
-        });
-        map.mapTypes.set('tehgrayz', mapType);
-        map.setMapTypeId('tehgrayz');
-    }
+});
+    //end mapbox
 
 
     $(document).on('show', '.accordion', function(e) {
