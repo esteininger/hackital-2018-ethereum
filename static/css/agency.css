@@ -728,7 +728,8 @@ section#sponsors {
 }
 
 .sponsors-img img{
-  height:60px
+  height: auto;
+  width: 10em;
 }
 
 .accordion-group {
