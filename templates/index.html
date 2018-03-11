@@ -213,9 +213,9 @@
     </section>
 
         <div class="row">
-          <div class="col-md-12">
-              <iframe src="https://teamhackital.github.io/maptemplate/index.html" id="map" scrolling="no"></iframe>
-          </div>
+          <!-- <div class="col-md-12"> -->
+              <div id="map" scrolling="no"></div>
+          <!-- </div> -->
         </div>
 
 
@@ -302,10 +302,10 @@
     <script src="../static/js/timeline.js"></script>
     <script src="../static/js/modernizr.js"></script>
 
-    <!-- Mapbox imports
+    <!-- Mapbox imports -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.43.0-beta.1/mapbox-gl.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.43.0-beta.1/mapbox-gl.js"></script>
-    -->
+
 </body>
 
 </html>
@@ -336,13 +336,12 @@
     }, 1000);
 
     //Mapbox functions
-    /*
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2NoaWFyaXp6aSIsImEiOiJjajE4a3NuZWowNzQ5MzNvN2xkdGh2YnVwIn0.dOZQgGCs8Fwxpy7bmRvvTg';
     var map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/schiarizzi/cje3ka2m25q0w2rl70bd32303', // stylesheet location
-        center: [-77.036871, 38.907192], // starting position [lng, lat]
-        zoom: 11 // starting zoom
+        center: [-77.036871,38.898536], // starting position [lng, lat]
+        zoom: 12 // starting zoom
     });
 
     // disable map zoom when using scroll
@@ -382,8 +381,7 @@
     });
 
 });
-    //end mapbox
-    */
+
 
 
     $(document).on('show', '.accordion', function(e) {
@@ -395,4 +393,8 @@
         $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
         //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
     });
+
+    $(document).ready(function() {
+      $('.mapboxgl-canvas').css({ 'position': "initial" });
+    })
 </script>
