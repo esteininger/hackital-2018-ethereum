@@ -8,7 +8,6 @@ google = Google()
 
 @app.route('/')
 def homePage():
-    print google.getFAQs()
     return render_template('index.html')
 
 @app.route('/Fall-2017')
